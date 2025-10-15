@@ -1,0 +1,206 @@
+/* ===== Layout ===== */
+.container {
+  padding: 20px;
+}
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.heading {
+  margin: 0;
+}
+
+/* ===== Message icon + dropdown ===== */
+.messageWrapper {
+  position: relative;
+  display: inline-block;
+}
+.messageIconBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 10px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.messageIconBtn:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+.messageIcon {
+  font-size: 20px;
+  color: #334155;
+}
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* Dropdown panel */
+.messageDropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  width: 440px;
+  max-height: 380px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 50;
+}
+.messageDropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown header */
+.dropdownHeader {
+  background: #0ea5e9;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 12px;
+}
+
+/* Scrollable table inside dropdown */
+.dropdownTableWrap {
+  max-height: 320px;
+  overflow-y: auto;
+}
+.dropdownTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.dropdownTable thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+}
+.dropdownTable tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+}
+.unreadRow {
+  background: #f0f9ff;
+}
+.messageCell {
+  word-break: break-word;
+}
+.timeCell {
+  white-space: nowrap;
+  font-size: 12px;
+  color: #64748b;
+}
+.okButton {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.okButton:hover {
+  background: #15803d;
+}
+.noMessage {
+  text-align: center;
+  color: #64748b;
+  padding: 16px;
+}
+
+/* ===== Requests table (scrollable + animated) ===== */
+.tableWrapper {
+  max-height: 420px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  animation: fadeIn 240ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.99); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Sticky header fix */
+.table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2; /* ensure header is above body rows */
+}
+
+.table th {
+  background: #0ea5e9; /* solid background for header cells */
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #0b87c9; /* stronger divider */
+}
+
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.table tbody tr:hover {
+  background: #f8fafc;
+  transition: background 0.18s ease;
+}
+
+.rowFadeIn {
+  animation: rowIn 220ms ease both;
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Status badge colors */
+.statusBadge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+}
+.Approved { background: #22c55e; }
+.Rejected { background: #ef4444; }
+.Pending  { background: #f59e0b; color: #111827; }

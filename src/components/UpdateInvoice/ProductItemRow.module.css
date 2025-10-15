@@ -1,0 +1,16 @@
+.row {
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.row:hover {
+  background-color: #f9f9f9;
+}
+
+.productImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}

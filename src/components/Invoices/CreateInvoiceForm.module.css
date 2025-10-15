@@ -1,0 +1,304 @@
+.container {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.viewCartBtn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.viewCartBtn:hover {
+  background-color: #2c80b4;
+}
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.productCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.productCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.productInfo {
+  max-width: 40%;
+}
+.productInfo h4 {
+  margin-bottom: 0.4rem;
+}
+.productInfo p {
+  margin: 0.2rem 0;
+}
+
+.productImage {
+  width: 30%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+  transition: transform 0.3s ease;
+}
+
+.productImage img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.productCard:hover .productImage img {
+  transform: scale(1.05);
+}
+
+.qtyControl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.qtyControl button {
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  background-color: #ecf0f1;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.qtyControl button:hover {
+  background-color: #d0d7dc;
+}
+.qtyControl span {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.outOfStock {
+  color: #e63946;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 6px;
+  animation: pulse 1.2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.addBtn {
+  padding: 0.6rem 1.2rem;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.addBtn:hover {
+  background-color: #219150;
+}
+
+.distributorSelectBox {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  /* margin-right: auto; */
+}
+
+.distributorSelectBox label {
+  margin-top: 7px;
+  font-weight: 600;
+  color: #333;
+}
+
+.distributorSelectBox select {
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 250px;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cartInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroupFull {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label,
+.inputGroupFull label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.inputGroup input,
+.inputGroupFull textarea {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.invoiceTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.invoiceTable th,
+.invoiceTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.invoiceTable th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.modalFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.totalRow {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.submitBtn, .closeBtn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submitBtn {
+  background-color: #28a745;
+  color: white;
+}
+
+.submitBtn:hover {
+  background-color: #218838;
+}
+
+.closeBtn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.closeBtn:hover {
+  background-color: #c82333;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+

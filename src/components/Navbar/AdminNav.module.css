@@ -1,0 +1,273 @@
+.wrapper {
+  font-family: 'Segoe UI', sans-serif;
+  
+}
+
+/* === Top Navbar === */
+.adminNavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f2e;
+  padding: 12px 24px;
+  color: #fff;
+  position: relative;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Left */
+.adminNavbarLeft {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.adminLogo {
+  color: #f0c040;
+}
+
+/* Center */
+.navbarCenterWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.navbarCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.middleNavItems {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+}
+.dropdown {
+  position: relative;
+}
+.dropbtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  transition: background-color 0.2s ease;
+}
+.dropbtn:hover {
+  background-color: #333b55;
+  border-radius: 5px;
+}
+.dropdownIcon {
+  width: 12px;
+  height: 12px;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.dropdownContentWrapper {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: #2e2e3d;
+  min-width: 180px;
+  border-radius: 6px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+.dropdownContent {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.dropdownLink {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+.dropdownLink:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Arrows (Below Center) */
+.centerArrows {
+  cursor: pointer;
+  user-select: none;
+}
+.arrowIcon {
+  color: white;
+  font-size: 20px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.arrowIcon:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* === Bottom Navbar === */
+
+.bottomNavbar {
+position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background-color: #2e2e3d;
+  padding: 12px 20px;
+  border-radius: 8px;
+  width: fit-content;
+  max-height: 500px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+}
+.bottomNavHoverArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+.bottomNavbar.show {
+ opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.bottomNavItems {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.bottomNavButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.bottomNavButton:hover {
+  background-color: #3b3b52;
+  border-radius: 5px;
+}
+.bottomDropdownContentWrapper {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: #3a3a4f;
+  min-width: 180px;
+  border-radius: 6px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+.bottomDropdownContentWrapper.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* === Right/Profile === */
+.adminNavbarRight {
+  position: relative;
+}
+.welcomeText {
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.profile {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+.profileDropdownPanel {
+  position: absolute;
+  top: 140%;
+  right: 0;
+  width: 260px;
+  background-color: #2e2e3d;
+  border-radius: 8px;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.profileDropdownPanel.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdownButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dropdownBtn {
+  background-color: #d9534f;
+  color: white;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.dropdownBtn:hover {
+  background-color: #c9302c;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .middleNavItems {
+    gap: 18px;
+  }
+
+  .bottomNavItems {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .adminNavbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .navbarCenterWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

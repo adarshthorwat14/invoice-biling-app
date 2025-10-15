@@ -1,0 +1,33 @@
+.totalContainer {
+  text-align: right;
+  margin-top: 24px;
+  padding: 16px;
+  border-top: 2px solid #ccc;
+  animation: slideUp 0.5s ease;
+}
+
+.submitBtn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #0056b3;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

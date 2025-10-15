@@ -1,0 +1,138 @@
+.update-product-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.update-product-container h2 {
+  text-align: center;
+  margin-bottom: 28px;
+  color: #2d2d2d;
+}
+
+.search-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.search-section input {
+  padding: 10px;
+  font-size: 16px;
+  width: 260px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 0 10px;
+}
+
+.search-section .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3a67f4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-section .btn:hover {
+  background-color: #234bd9;
+}
+
+.update-content {
+  display: flex;
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.form-container {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3a67f4;
+}
+
+.image-upload-group {
+  width: 100%;
+}
+
+.image-upload-group input[type="file"] {
+  margin-top: 8px;
+}
+
+.image-container {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.image-container img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.image-placeholder {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  border: 1px dashed #aaa;
+  border-radius: 8px;
+}
+
+.btn.primary {
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.btn.primary:hover {
+  background-color: #218838;
+}
+
+.message {
+  margin-top: 20px;
+  text-align: center;
+  color: #e53935;
+  font-weight: bold;
+}

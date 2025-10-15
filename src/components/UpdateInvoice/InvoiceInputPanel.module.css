@@ -1,0 +1,147 @@
+.panel {
+  background-color: #fff;
+  padding: 30px 28px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 700px;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 25px;
+  user-select: none;
+  text-align: center;
+}
+
+/* Full width inputs */
+.fullWidthInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+  font-size: 15px;
+  color: #444;
+}
+
+.fullWidthInput label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+.fullWidthInput input[type="text"] {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+.fullWidthInput input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Client Name display */
+.clientNameDisplay {
+  padding: 10px 12px;
+  font-size: 15px;
+  color: #007bff;
+  font-style: italic;
+  border: 1.8px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9faff;
+  user-select: none;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+/* Grid container with 2 columns */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 30px;
+  margin-bottom: 22px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  color: #444;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+.inputGroup input[type="date"],
+.inputGroup input[type="number"],
+.inputGroup select,
+.inputGroup input[type="text"] {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+.inputGroup input[type="date"]:focus,
+.inputGroup input[type="number"]:focus,
+.inputGroup select:focus,
+.inputGroup input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Full width textarea */
+.fullWidthTextarea {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.fullWidthTextarea label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+.fullWidthTextarea textarea {
+  min-height: 100px;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+.fullWidthTextarea textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}

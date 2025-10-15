@@ -1,0 +1,17 @@
+*{
+  /* background-color: black; */
+}
+.home {
+  text-align: center;
+  padding: 50px;
+}
+
+.home h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+.home p {
+  font-size: 1.2em;
+  color: #555;
+}

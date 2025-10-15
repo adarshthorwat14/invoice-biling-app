@@ -1,0 +1,177 @@
+/* Container panel */
+.panel {
+  background-color: #f9f9f9;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+  text-align: center;
+}
+
+/* Input section wrapper */
+.inputSection {
+  margin-bottom: 25px;
+}
+
+/* Select product dropdown */
+.selectInput {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.selectInput:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Product description and image container side-by-side */
+.productDetailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 15px;
+  gap: 20px;
+  background: #fff;
+  padding: 12px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* Description block */
+.description {
+  flex: 2;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Image wrapper */
+.imageWrapper {
+  flex: 1;
+  text-align: right;
+}
+
+/* Product image */
+.productImage {
+  width: 100px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+}
+
+/* Placeholder if no image */
+.noImage {
+  color: #999;
+  font-style: italic;
+  font-size: 14px;
+  padding: 30px 0;
+}
+
+/* Row for quantity and discount inputs side by side */
+.quantityDiscountRow {
+  display: flex;
+  gap: 30px;
+  margin-top: 15px;
+}
+
+/* Each input group container */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+}
+
+/* Label styling */
+.inputGroup label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Small numeric inputs */
+.smallInput {
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.smallInput:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Add item button */
+.addButton {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+.addButton:hover {
+  background-color: #0056b3;
+}
+
+/* Table styling */
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.productTable th,
+.productTable td {
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.productTable thead {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+.productTable tbody tr:hover {
+  background-color: #f1faff;
+}
+
+.productTable tbody tr:last-child td {
+  border-bottom: none;
+}

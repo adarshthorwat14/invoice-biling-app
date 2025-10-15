@@ -1,0 +1,158 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d1b2a;
+  padding: 12px 24px;
+  color: #fff;
+  height: 60px;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #d1d5db;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+.link:hover,
+.active {
+  color: #ffcc00;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: #d1d5db;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dropbtn:hover {
+  color: #ffcc00;
+}
+
+.icon {
+  width: 12px;
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 60px;
+  background-color: #1e293b;
+  border-radius: 6px;
+  min-width: 160px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownLink {
+  display: block;
+  padding: 10px 15px;
+  color: #f1f5f9;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.dropdownLink:hover {
+  background-color: #0f172a;
+}
+
+.adminNavbarRight {
+  position: relative;
+  cursor: pointer;
+}
+
+.welcomeText {
+  font-weight: 500;
+  color: #f0f0f0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+.welcomeText:hover {
+  background-color: rgb(77, 77, 114);
+  border-radius: 6px;
+}
+.profileDropdownPanel {
+  position: absolute;
+  top: 145%;
+  right: 0;
+  width: 280px;
+  background-color: #2e2e3d;
+  padding: 16px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.dropdownButtons {
+  display: flex;
+  flex-direction: column;
+  /* gap: px; */
+}
+
+.dropdownBtn {
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdownBtn:hover {
+  background-color: #c9302c;
+}
+
+.profileDropdownPanel.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+

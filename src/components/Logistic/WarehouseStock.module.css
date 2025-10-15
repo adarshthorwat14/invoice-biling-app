@@ -1,0 +1,45 @@
+.container {
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stockTable {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.stockTable th,
+.stockTable td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.stockTable th {
+  background-color: #1f2937;
+  color: #fff;
+}
+
+.stockTable tr:hover {
+  background-color: #f9fafb;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}

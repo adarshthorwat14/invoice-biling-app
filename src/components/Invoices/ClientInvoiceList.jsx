@@ -1,0 +1,209 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './InvoiceList.css';
+import Swal from 'sweetalert2';
+
+
+
+const ClientInvoiceList = () => {
+  const [invoices, setInvoices] = useState([]);
+  const [filteredInvoices, setFilteredInvoices] = useState([]);
+  const [clientId, setClientId] = useState('');
+  const [clientName, setClientName] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  
+  useEffect(() => {
+    fetchInvoices();
+  }, []);
+
+const fetchInvoices = () => {
+  const stored = localStorage.getItem('client');
+  if (!stored) {
+    Swal.fire('Error', 'Client not logged in', 'error');
+    return;
+  }
+
+  const client = JSON.parse(stored);
+  axios.get(`http://localhost:8080/api/invoices/client/${client.id}`)
+    .then(res => {
+      setInvoices(res.data);
+      setFilteredInvoices(res.data);
+      setClientId(client.id); // Optional: prefill client filter
+      setClientName(client.name)
+    })
+    .catch(err => {
+      console.error('Error fetching invoices:', err);
+      Swal.fire('Error', 'Failed to fetch invoices', 'error');
+    });
+};
+
+  const filterInvoices = () => {
+    let filtered = [...invoices];
+
+    if (clientId.trim()) {
+      filtered = filtered.filter(inv =>
+        inv.client?.id?.toLowerCase().includes(clientId.toLowerCase())
+      );
+    }
+
+    if (startDate) {
+      filtered = filtered.filter(inv => new Date(inv.invoiceDate) >= new Date(startDate));
+    }
+
+    if (endDate) {
+      filtered = filtered.filter(inv => new Date(inv.invoiceDate) <= new Date(endDate));
+    }
+
+    setFilteredInvoices(filtered);
+  };
+
+  useEffect(() => {
+    filterInvoices();
+  }, [clientId, startDate, endDate]);
+
+  const downloadPDF = (invoiceId) => {
+    axios.get(`http://localhost:8080/api/invoices/${invoiceId}/pdf`, {
+      responseType: 'blob',
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `invoice_${invoiceId}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }).catch((err) => {
+      console.error('Error downloading PDF:', err);
+      alert('Failed to download PDF');
+    });
+  };
+
+  const deleteInvoice = (invoiceId) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'Do you want to cancel this invoice?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, cancel it!',
+    cancelButtonText: 'Back',
+    reverseButtons: true,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.delete(`http://localhost:8080/api/invoices/${invoiceId}`)
+        .then(() => {
+          Swal.fire('Canceled!', 'Invoice has been canceled.', 'success');
+          fetchInvoices();
+        })
+        .catch(err => {
+          console.error('Error canceling invoice:', err);
+          Swal.fire('Error!', 'Failed to cancel invoice.', 'error');
+        });
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire('Cancelled', 'Invoice not canceled.', 'info');
+    }
+  });
+};
+
+
+  const viewInvoice = (invoiceId) => {
+    axios.get(`http://localhost:8080/api/invoices/${invoiceId}/pdf`, {
+      responseType: 'blob',
+    }).then((response) => {
+      const file = new Blob([response.data], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
+    }).catch((err) => {
+      console.error('Error viewing PDF:', err);
+      alert('Failed to open invoice PDF');
+    });
+  };
+
+  return (
+    <div className="invoice-container">
+      <h2>{clientName}</h2>
+
+     <div className="filter-bar">
+        {/*  <input
+          type="text"
+          placeholder="Search by Client ID"
+          value={clientId}
+          onChange={(e) => setClientId(e.target.value)}
+        />*/}
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+        <button className="btn" onClick={() => {
+          setClientId('');
+          setStartDate('');
+          setEndDate('');
+          setFilteredInvoices(invoices);
+        }}>Clear Filters</button>
+      </div> 
+
+      <div className="scroll-wrapper">
+        <table className="invoice-table">
+          <thead>
+            <tr>
+              <th>Invoice ID</th>
+              <th>Date</th>
+              <th>Due Date</th>
+              <th>Product Total</th>
+              <th>Product Tax</th>
+              <th>product Discount</th>
+               <th>Total Pay</th>
+              <th>Global Tax</th>
+              <th>Global Discount</th>
+              <th>Payment Method</th>
+              <th>Status</th>
+              <th>Generated By</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+  {filteredInvoices.map(inv => {
+    const isCanceled = inv.paymentStatus === 'CANCELED';
+
+    return (
+        
+      <tr
+        key={inv.invoiceId}
+        className={isCanceled ? 'canceled-invoice' : ''}
+        title={isCanceled ? 'Invoice is canceled' : ''}
+      >
+        <td>{inv.invoiceId}</td>
+        <td>{inv.invoiceDate}</td>
+        <td>{inv.dueDate}</td>
+        <td>₹{inv.totalAmount ? inv.totalAmount.toFixed(2) : "0.00"}</td>
+        <td>{inv.taxAmount ? inv.taxAmount.toFixed(2) : "0.00"}%</td>
+        <td>{inv.discount.toFixed(2)}%</td>
+         <td>₹{inv.totalPay ? inv.totalPay.toFixed(2) : "0.00"}</td>
+        <td>{inv.globalTax ? inv.globalTax.toFixed(2) : "0.00"}%</td>
+        <td>{inv.globalDiscount.toFixed(2)}%</td>
+        <td>{inv.paymentMethod}</td>
+        <td>{inv.paymentStatus}</td>
+        <td>{inv.generatedBy}</td>
+        <td>
+          <button className="btn" onClick={() => viewInvoice(inv.invoiceId)}>View</button>
+          <button className="btn" onClick={() => downloadPDF(inv.invoiceId)}>Download</button>
+          <button className="btn btn-danger" onClick={() => deleteInvoice(inv.invoiceId)}>Cancel</button>
+        </td>
+      </tr>
+
+    );
+  })}
+  </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ClientInvoiceList;

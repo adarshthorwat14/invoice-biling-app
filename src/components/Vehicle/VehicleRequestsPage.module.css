@@ -1,0 +1,264 @@
+.container {
+  padding: 20px;
+  background: #f7f9fc;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease-in-out;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.heading {
+  margin: 0;
+}
+
+.subHeading {
+  font-size: 20px;
+  margin: 12px 0;
+  font-weight: 600;
+  padding-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.subHeading:hover {
+  transform: translateX(6px);
+}
+
+.approvedHeading {
+  color: #16a34a;
+}
+
+.pendingHeading {
+  color: #d97706;
+}
+
+.tableWrapper {
+  margin: 20px 0;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Scroll wrapper for wide tables */
+.scrollableTable {
+  max-height: 280px;
+  overflow-y: auto;
+  overflow-x: auto; /* ✅ allow horizontal scroll */
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* Scrollbar styling */
+.scrollableTable::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scrollableTable::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+.scrollableTable::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.table {
+  width: 100%;
+  min-width: 700px; /* ✅ keeps table structured, allows scroll */
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  background: #edf2f7;
+  padding: 10px;
+  text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.3s ease;
+  word-break: break-word; /* ✅ prevent overflow text */
+}
+
+.rowHover:hover {
+  background: #f1f5f9;
+  transform: scale(1.01);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.noData {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+}
+
+.approved {
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.forwarded {
+  font-weight: bold;
+  color: #d97706;
+}
+
+/* ======================= */
+/* 🔔 Messages Dropdown UI */
+/* ======================= */
+
+.messageWrapper {
+  position: relative;
+  display: inline-block;
+}
+.messageIconBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 10px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.messageIconBtn:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+.messageIcon {
+  font-size: 20px;
+  color: #334155;
+}
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* Dropdown panel */
+.messageDropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  width: 440px;
+  max-height: 380px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 50;
+}
+.messageDropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown header */
+.dropdownHeader {
+  background: #0ea5e9;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 12px;
+}
+
+/* Scrollable table inside dropdown */
+.dropdownTableWrap {
+  max-height: 320px;
+  overflow-y: auto;
+}
+.dropdownTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.dropdownTable thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+}
+.dropdownTable tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+}
+.unreadRow {
+  background: #f0f9ff;
+}
+.messageCell {
+  word-break: break-word;
+}
+.timeCell {
+  white-space: nowrap;
+  font-size: 12px;
+  color: #64748b;
+}
+.okButton {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.okButton:hover {
+  background: #15803d;
+}
+.noMessage {
+  text-align: center;
+  color: #64748b;
+  padding: 16px;
+}
+/* ======================= */
+/* 📱 Responsive tweaks    */
+/* ======================= */
+
+@media (max-width: 768px) {
+  .table,
+  .dropdownTable {
+    font-size: 12px;
+    min-width: 400px;
+  }
+
+  .heading {
+    font-size: 22px;
+  }
+
+  .subHeading {
+    font-size: 18px;
+  }
+}

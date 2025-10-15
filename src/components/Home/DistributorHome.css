@@ -1,0 +1,29 @@
+/* DistributorHome.css */
+
+.distributor-home-simple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 1s ease-in;
+}
+
+.distributor-home-simple h1 {
+  color: #00796b;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px #ccc;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

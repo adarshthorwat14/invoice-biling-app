@@ -1,0 +1,164 @@
+.container {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f9fc;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Scrollable main table */
+.scrollTable {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.mainTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  background: #fff;
+}
+
+.mainTable th, .mainTable td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mainTable th {
+  background-color: #2980b9;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.tableRow:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tableRow:hover {
+  background-color: #f0f8ff;
+  transition: background 0.3s ease;
+}
+
+.checkBtn {
+  padding: 0.4rem 0.8rem;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkBtn:hover {
+  background-color: #2ecc71;
+}
+
+.detailsRow {
+  animation: fadeInUp 0.4s ease-in-out;
+  background: #eaf3fc;
+}
+
+.detailsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.detailsSection {
+  flex: 1 1 30%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.detailsSection table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detailsSection th, .detailsSection td {
+  border: 1px solid #dcdfe6;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.detailsSection th {
+  background-color: #3498db;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.detailsSection tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.detailsSection tr:hover {
+  background-color: #f0f8ff;
+  transition: background 0.3s ease;
+}
+
+.dispatchWrapper {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.dispatchBtn {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dispatchBtn:hover {
+  background-color: #d35400;
+}
+
+.successMessage {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #27ae60;
+  color: white;
+  border-radius: 6px;
+  font-weight: 500;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .detailsWrapper {
+    flex-direction: column;
+  }
+  .detailsSection {
+    flex: 1 1 100%;
+  }
+}

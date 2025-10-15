@@ -1,0 +1,127 @@
+.container {
+  padding: 40px 20px;
+  background-color: #f4f6fa;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.searchBox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.searchBox input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 300px;
+  font-size: 16px;
+}
+
+.searchBox button {
+  padding: 10px 16px;
+  background-color: #1f78d1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchBox button:hover {
+  background-color: #125ea8;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.clientTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.clientTable th,
+.clientTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.clientTable th {
+  background-color: #1f1f2e;
+  color: #fff;
+}
+
+.clientTable td {
+  color: #333;
+  font-size: 15px;
+}
+
+.listCell {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.listCell li {
+  list-style: disc;
+  margin-bottom: 4px;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.inactive {
+  color: red;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .searchBox {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .searchBox input {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .searchBox button {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .clientTable th, .clientTable td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

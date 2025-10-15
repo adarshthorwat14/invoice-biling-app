@@ -1,0 +1,251 @@
+/* PlantProductRequests.module.css */
+
+.container {
+  padding: 20px;
+  background: #f9fafc;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #2d3748;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #edf2f7;
+  text-align: left;
+}
+
+.table th {
+  background: #f1f5f9;
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.mainRow:hover {
+  background: #f9f9fb;
+  transition: 0.3s ease;
+}
+
+.checkBtn {
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkBtn:hover {
+  background: #2b6cb0;
+}
+
+.expandedRow td {
+  padding: 20px;
+  background: #fdfdfd;
+  animation: slideDown 0.4s ease;
+}
+
+.flexWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.leftSection,
+.rightSection {
+  flex: 1;
+  min-width: 280px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.leftSection h4,
+.rightSection h4 {
+  margin-bottom: 10px;
+  color: #2d3748;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.subTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.subTable th,
+.subTable td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.subTable th {
+  background: #f7fafc;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.productStockBlock {
+  margin-top: 15px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.productStockBlock h5 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c5282;
+}
+
+.approveSection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.remarkBox {
+  width: 100%;
+  max-width: 500px;
+  min-height: 80px;
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.remarkBox:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 6px rgba(49, 130, 206, 0.3);
+}
+
+.approveBtn {
+  background: #38a169;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.approveBtn:hover {
+  background: #2f855a;
+  transform: translateY(-2px);
+}
+
+/* Availability status */
+.available {
+  color: #38a169;
+  font-weight: 600;
+}
+
+.partial {
+  color: #dd6b20;
+  font-weight: 600;
+}
+
+.unavailable {
+  color: #e53e3e;
+  font-weight: 600;
+}
+
+.allocateInput {
+  width: 80px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.allocateBtn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.allocateBtn:hover { background: #1e40af; }
+
+.allocationSummary {
+  margin-top: 16px;
+  padding: 12px;
+  background: #fafafa;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+}
+
+.removeAllocBtn {
+  margin-left: 12px;
+  background: transparent;
+  border: 1px solid #e53e3e;
+  color: #e53e3e;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.removeAllocBtn:hover {
+  background: #e53e3e;
+  color: white;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

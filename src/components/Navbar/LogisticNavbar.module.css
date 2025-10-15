@@ -1,0 +1,310 @@
+.adminNavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f2e;
+  padding: 12px 24px;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.adminNavbarLeft {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.adminLogo {
+  color: #f0c040;
+}
+
+.navbarCenter {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: 8px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease;
+  margin-top: -5px;
+}
+
+.dropbtn:hover {
+  background-color: rgb(77, 77, 114);
+  border-radius: 6px;
+}
+
+.dropdownIcon {
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownContentWrapper {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 200px;
+  background-color: #2e2e3d;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.dropdownContent {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.dropdownLink {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.dropdownLink:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.adminNavbarRight {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.welcomeText {
+  font-weight: 500;
+  color: #f0f0f0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+.welcomeText:hover {
+  background-color: rgb(77, 77, 114);
+  border-radius: 6px;
+}
+.profileDropdownPanel {
+  position: absolute;
+  top: 145%;
+  right: 0;
+  width: 280px;
+  background-color: #2e2e3d;
+  padding: 16px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.dropdownButtons {
+  display: flex;
+  flex-direction: column;
+  /* gap: px; */
+}
+
+.dropdownBtn {
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdownBtn:hover {
+  background-color: #c9302c;
+}
+
+.profileDropdownPanel.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+/* ===================== */
+/* Notification Styling   */
+/* ===================== */
+.notificationWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.notificationIcon {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.notificationIcon:hover {
+  background-color: rgb(77, 77, 114);
+}
+
+.notificationIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 12px;
+  line-height: 1;
+}
+
+/* Hover Dropdown Panel (same style as profile dropdown) */
+.notificationDropdown {
+  position: absolute;
+  top: 145%;
+  right: 0;
+  width: 300px;
+  background-color: #2e2e3d;
+  padding: 10px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* Show dropdown on wrapper hover */
+.notificationWrapper:hover .notificationDropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.notificationItem {
+  padding: 8px;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: white;
+}
+
+.notificationItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.unread {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #bbb;
+  margin-top: 4px;
+}
+
+.noNotification {
+  text-align: center;
+  color: #bbb;
+  font-style: italic;
+}
+
+.vehicleRequestWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.vehicleRequestBell {
+  margin-left: 15px;
+  margin-top: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.vehicleRequestIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.vehicleRequestCount {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 2px 5px;
+  min-width: 5px;
+  text-align: center;
+}
