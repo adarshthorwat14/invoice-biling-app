@@ -19,7 +19,7 @@ const Login = () => {
   const handleAdminLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8080/api/admins/login', {
+      const res = await fetch('https://billing-system-backendkj.onrender.com/api/admins/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -36,7 +36,7 @@ const Login = () => {
   const handleProductLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8080/api/productMng/login', {
+      const res = await fetch('https://billing-system-backendkj.onrender.com/api/productMng/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -53,7 +53,7 @@ const Login = () => {
   const handleDistributorLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8080/api/distributors/login', {
+      const res = await fetch('https://billing-system-backendkj.onrender.com/api/distributors/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -70,7 +70,7 @@ const Login = () => {
   const handleClientLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8080/api/clients/login', {
+      const res = await fetch('https://billing-system-backendkj.onrender.com/api/clients/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, password }),
@@ -87,7 +87,7 @@ const Login = () => {
   const handleLogisticLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8080/api/logistics/login', {
+      const res = await fetch('https://billing-system-backendkj.onrender.com/api/logistics/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, password }),
@@ -104,7 +104,7 @@ const Login = () => {
   const handlePlantEmployeeLogin = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch('http://localhost:8080/api/plant-employees/login', {
+    const res = await fetch('https://billing-system-backendkj.onrender.com/api/plant-employees/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -123,7 +123,7 @@ const Login = () => {
 const handleSalesPersonLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:8080/api/salespersons/login', {
+      const res = await fetch('https://billing-system-backendkj.onrender.com/api/salespersons/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, password }),
