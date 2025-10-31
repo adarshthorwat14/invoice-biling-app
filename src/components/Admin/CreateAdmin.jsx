@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './CreateAdmin.module.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import api from '../../api/axiosConfig';
 
 const CreateAdmin = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const CreateAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/admins', formData);
+      await api.post('/api/admins', formData);
       Swal.fire({
         icon: 'success',
         title: 'Admin Created!',

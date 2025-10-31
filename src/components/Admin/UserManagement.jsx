@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './UserManagement.module.css';
 import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const UserManagement = () => {
   const [form, setForm] = useState({ id: '', userType: 'client' });
@@ -15,7 +16,7 @@ const UserManagement = () => {
       return;
     }
 
-    axios.get(`http://localhost:8080/api/users/get-user`, {
+    api.get(`/api/users/get-user`, {
       params: { id: form.id, type: form.userType }
     })
     .then(res => {
@@ -31,7 +32,7 @@ const UserManagement = () => {
   };
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:8080/api/users/update-status`, {
+    api.put(`/api/users/update-status`, {
       id: form.id,
       userType: form.userType,
       status: newStatus,

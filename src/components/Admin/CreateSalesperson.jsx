@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./CreateSalesperson.module.css";
+import api from '../../api/axiosConfig';
 
 const CreateSalesperson = () => {
   const [form, setForm] = useState({
@@ -27,7 +28,7 @@ const CreateSalesperson = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/salespersons", form);
+      await api.post("/api/salespersons", form);
       setMessage("✅ Salesperson created successfully!");
       setForm({
         name: "",

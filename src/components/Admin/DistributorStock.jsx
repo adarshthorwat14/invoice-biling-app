@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './DistributorStock.module.css';
 import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const DistributorStock = () => {
   const [inputId, setInputId] = useState('');
@@ -10,7 +11,7 @@ const DistributorStock = () => {
   const handleSearch = () => {
     if (!inputId.trim()) return;
 
-    axios.get(`http://localhost:8080/api/distributors/${inputId}`)
+    api.get(`/api/distributors/${inputId}`)
       .then(res => setDistributorInfo(res.data))
       .catch(err => {
         console.error('Distributor not found:', err);
@@ -18,7 +19,7 @@ const DistributorStock = () => {
         alert('Distributor not found');
       });
 
-    axios.get(`http://localhost:8080/api/distributors/stock/${inputId}`)
+    api.get(`/api/distributors/stock/${inputId}`)
       .then(res => setStockItems(res.data))
       .catch(err => {
         console.error('Stock not found:', err);
