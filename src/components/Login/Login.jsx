@@ -21,22 +21,22 @@ const Login = () => {
     navigate('/admin/home');
   }
 
-  // const handleAdminLogin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await fetch('https://billing-system-backendkj.onrender.com/api/admins/login', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({ email, password }),
-  //     });
-  //     if (!res.ok) throw new Error('Invalid credentials');
-  //     const data = await res.json();
-  //     localStorage.setItem('admin', JSON.stringify(data));
-  //     navigate('/admin/home');
-  //   } catch (error) {
-  //     alert('Admin login failed: ' + error.message);
-  //   }
-  // };
+  const handleAdminLogin = async (e) => {
+    // e.preventDefault();
+    // try {
+    //   const res = await fetch('https://billing-system-backendkj.onrender.com/api/admins/login', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email, password }),
+    //   });
+    //   if (!res.ok) throw new Error('Invalid credentials');
+    //   const data = await res.json();
+    //   localStorage.setItem('admin', JSON.stringify(data));
+      navigate('/admin/home');
+    // } catch (error) {
+    //   alert('Admin login failed: ' + error.message);
+    // }
+  };
 
   const handleProductLogin = async (e) => {
     e.preventDefault();
@@ -160,13 +160,13 @@ const handleSalesPersonLogin = async (e) => {
       </div>
 
       {selectedRole === 'admin' 
-      // && (
-      //   <form className={styles.form} onSubmit={handleAdminLogin}>
-      //     <input type="email" placeholder="Admin Email" value="adarshthorwat@beunique.com" required onChange={(e) => setEmail(e.target.value)} />
-      //     <input type="password" placeholder="Password" value="Adarsh123" required onChange={(e) => setPassword(e.target.value)} />
-      //     <button type="submit">Login as Admin</button>
-      //   </form>
-      // )
+      && (
+        <form className={styles.form} onSubmit={handleAdminLogin}>
+          {/* // <input type="email" placeholder="Admin Email" value="adarshthorwat@beunique.com" required onChange={(e) => setEmail(e.target.value)} />
+          // <input type="password" placeholder="Password" value="Adarsh123" required onChange={(e) => setPassword(e.target.value)} />
+          // <button type="submit">Login as Admin</button> */}
+        </form>
+      )
       
       }
 
