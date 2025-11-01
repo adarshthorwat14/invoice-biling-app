@@ -16,6 +16,11 @@ const Login = () => {
     setPassword('');
   };
 
+  if(selectedRole = "admin")
+  {
+    navigate('/admin/home');
+  }
+
   // const handleAdminLogin = async (e) => {
   //   e.preventDefault();
   //   try {
@@ -162,6 +167,7 @@ const handleSalesPersonLogin = async (e) => {
       //     <button type="submit">Login as Admin</button>
       //   </form>
       // )
+      
       }
 
       {selectedRole === 'product' && (
