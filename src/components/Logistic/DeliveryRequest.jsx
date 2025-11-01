@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from './DeliveryRequest.module.css';
+import api from '../../api/axiosConfig';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -15,7 +15,7 @@ const DeliveryRequest = () => {
 
   const fetchInvoices = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/invoices');
+      const res = await api.get('/api/invoices');
       setInvoices(res.data || []);
     } catch (error) {
       console.error('Error fetching invoices:', error);

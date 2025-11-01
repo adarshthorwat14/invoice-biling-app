@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductRequest.module.css';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import api from '../../../api/axiosConfig';
 
 const ProductRequest = () => {
   const [requests, setRequests] = useState([]);
@@ -16,7 +16,7 @@ const ProductRequest = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/distributors/all');
+      const res = await api.get('/api/distributors/all');
       setRequests(res.data);
     } catch (err) {
       console.error('Error fetching requests:', err);
@@ -25,7 +25,7 @@ const ProductRequest = () => {
 
   const fetchAllProductStocks = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/products');
+      const res = await api.get('/api/products');
       const stockMap = {};
       res.data.forEach(product => {
         stockMap[product.productId] = product.stockQuantity;
@@ -46,7 +46,7 @@ const ProductRequest = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(`http://localhost:8080/api/distributors/request/${id}/status`, {
+      await api.put(`/api/distributors/request/${id}/status`, {
         status,
         remark: remarks[id] || ''
       });

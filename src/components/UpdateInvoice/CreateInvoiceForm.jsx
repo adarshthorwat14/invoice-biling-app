@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InvoiceInputPanel from "./InvoiceInputPanel";
 import InvoiceItemsPanel from "./InvoiceItemsPanel";
 import styles from "./CreateInvoiceForm.module.css";
-import axios from "axios";
+import api from "../../api/axiosConfig";
 
 const CreateInvoiceForm = () => {
   // Invoice Info (Left Panel)
@@ -40,8 +40,8 @@ const CreateInvoiceForm = () => {
       })),
     };
 
-    axios
-      .post("http://localhost:8080/api/invoices", payload)
+    api
+      .post("/api/invoices", payload)
       .then(() => alert("✅ Invoice created successfully!"))
       .catch(err => {
         console.error("❌ Error creating invoice:", err);

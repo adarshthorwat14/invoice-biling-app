@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styles from "./ClientStockHistory.module.css"; // Create a new CSS module
-
+import api from '../../api/axiosConfig';
 const ClientStockHistory = () => {
   const distributor = JSON.parse(localStorage.getItem("distributor"));
   const [invoices, setInvoices] = useState([]);
 
   useEffect(() => {
     if (distributor?.id) {
-      axios
-        .get(`http://localhost:8080/api/invoices/distributor/${distributor.id}`)
+      api.get(`/api/invoices/distributor/${distributor.id}`)
         .then((res) => setInvoices(res.data))
         .catch((err) => console.error("Error loading invoice history", err));
     }

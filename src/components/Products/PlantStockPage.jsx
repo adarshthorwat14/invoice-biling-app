@@ -8,7 +8,7 @@ const PlantStockPage = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/plants")
+    fetch("https://billing-system-backendkj.onrender.com/api/plants")
       .then((res) => res.json())
       .then((data) => setPlants(data))
       .catch((err) => console.error("Failed to fetch plants", err));
@@ -16,7 +16,7 @@ const PlantStockPage = () => {
 
   const handleFetchStock = () => {
     if (!selectedPlant) return;
-    fetch(`http://localhost:8080/api/plants/plant?plantId=${selectedPlant}`)
+    fetch(`https://billing-system-backendkj.onrender.com/api/plants/plant?plantId=${selectedPlant}`)
 
       .then((res) => res.json())
       .then((data) => setStockData(data))

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './DeliveryNotes.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const DeliveryNotes = () => {
   const [notes, setNotes] = useState([]);
@@ -13,7 +13,7 @@ const DeliveryNotes = () => {
 
   const fetchDeliveryNotes = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/delivery/delivery-notes/all');
+      const res = await api.get('/api/delivery/delivery-notes/all');
       setNotes(res.data.reverse()); // latest first
     } catch (error) {
       console.error('Error fetching delivery notes:', error);

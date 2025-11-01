@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from './ViewProducts.module.css';
+import api from '../../api/axiosConfig';
 
 const ViewProducts = () => {
   const [products, setProducts] = useState([]);
@@ -8,7 +8,7 @@ const ViewProducts = () => {
   const [searchedProduct, setSearchedProduct] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/products')
+    api.get('/api/products')
       .then(res => {
         const sorted = res.data.sort((a, b) => a.productId.localeCompare(b.productId));
         setProducts(sorted);
@@ -19,7 +19,7 @@ const ViewProducts = () => {
   const handleSearch = () => {
     if (searchId.trim() === '') return;
 
-    axios.get(`http://localhost:8080/api/products/${searchId}`)
+    api.get(`/api/products/${searchId}`)
       .then(res => setSearchedProduct(res.data))
       .catch(err => {
         console.error('Product not found:', err);

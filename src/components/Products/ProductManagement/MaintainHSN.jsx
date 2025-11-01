@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import styles from './MaintainHSN.module.css';
+import api from '../../../api/axiosConfig';
 
 const MaintainHSN = () => {
   const [hsn, setHsn] = useState({ code: '', description: '', gstRate: '' });
   const [hsnList, setHsnList] = useState([]);
 
   const fetchHSNList = () => {
-    axios.get('http://localhost:8080/api/hsn')
+    api.get('/api/hsn')
       .then(res => setHsnList(res.data))
       .catch(err => console.error('Failed to fetch HSN codes', err));
   };
@@ -22,7 +23,7 @@ const MaintainHSN = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/hsn', hsn)
+    api.post('/api/hsn', hsn)
       .then(() => {
         alert('HSN Code Added');
         setHsn({ code: '', description: '', gstRate: '' });

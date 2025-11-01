@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './DistributorCurrentStock.module.css';
-import axios from 'axios';
-
+import api from '../../api/axiosConfig';
 const DistributorCurrentStock = () => {
  
   const [stockItems, setStockItems] = useState([]);
@@ -10,7 +9,7 @@ const DistributorCurrentStock = () => {
 
   useEffect(() => {
     if (distributorId) {
-      axios.get(`http://localhost:8080/api/distributors/stock/${distributorId}`)
+      api.get( `/api/distributors/stock/${distributorId}`)
         .then(res => setStockItems(res.data))
         .catch(err => console.error('Failed to load stock:', err));
     }

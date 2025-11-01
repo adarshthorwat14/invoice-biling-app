@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CreatePlantEmployee.module.css';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import api from '../../api/axiosConfig';
 
 const CreatePlantEmployee = () => {
   const [plants, setPlants] = useState([]);
@@ -15,7 +15,7 @@ const CreatePlantEmployee = () => {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/plants")
+    api.get("/api/plants")
       .then(res => setPlants(res.data))
       .catch(err => console.error("Error fetching plants", err));
   }, []);
@@ -45,7 +45,7 @@ const CreatePlantEmployee = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/plant-employees", form);
+      await api.post("/api/plant-employees", form);
       Swal.fire("Success", "Employee added successfully", "success");
       setForm({ employeeName: '', plantId: '', plantName: '', email: '',password : '', position: '' });
     } catch (err) {

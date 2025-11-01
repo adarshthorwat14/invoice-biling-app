@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './LogisticsDeliveryNotes.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const LogisticsDeliveryNotes = () => {
   const [plants, setPlants] = useState([]);
@@ -24,7 +24,7 @@ const LogisticsDeliveryNotes = () => {
 
   const fetchPlants = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/plants');
+      const res = await api.get('/api/plants');
       setPlants(res.data);
     } catch (err) {
       console.error('Failed to fetch plants:', err);
@@ -33,8 +33,8 @@ const LogisticsDeliveryNotes = () => {
 
   const fetchDeliveryNotesByPlant = async (plantName) => {
     try {
-      const res = await axios.get(
-        `http://localhost:8080/api/plants/${encodeURIComponent(plantName)}/delivery-notes`
+      const res = await api.get(
+        `/api/plants/${encodeURIComponent(plantName)}/delivery-notes`
       );
       const sortedNotes = res.data.sort((a, b) => new Date(b.date) - new Date(a.date));
       setDeliveryNotes(sortedNotes.slice(0, 10));
@@ -45,7 +45,7 @@ const LogisticsDeliveryNotes = () => {
 
   const fetchVehicles = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/logistics/vehicles/available');
+      const res = await api.get('/api/logistics/vehicles/available');
       setVehicles(res.data);
     } catch (err) {
       console.error('Failed to fetch vehicles:', err);
@@ -95,7 +95,7 @@ const LogisticsDeliveryNotes = () => {
     if (!data) return;
 
     try {
-      await axios.post('http://localhost:8080/api/vehicle/vehicle-requests/create', {
+      await api.post('/api/vehicle/vehicle-requests/create', {
         requestId: note.requestId,
         transportId: data.transportId,
         vehicleNumber: data.vehicleNumber,

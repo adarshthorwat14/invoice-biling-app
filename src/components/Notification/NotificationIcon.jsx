@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Bell } from 'lucide-react'; // make sure lucide-react is installed
 import styles from './DistributorNavbar.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const NotificationIcon = ({ recipientId, userRole }) => {
   const [count, setCount] = useState(0);
 
   const fetchCount = async () => {
     try {
-      const res = await axios.get(`/api/notifications/count`, {
+      const res = await api.get(`/api/notifications/count`, {
         params: { recipientId, userRole }
       });
       setCount(res.data);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './AdminHome.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const AdminHome = () => {
   const [adminName, setAdminName] = useState('');
@@ -26,11 +26,11 @@ const AdminHome = () => {
     const fetchCounts = async () => {
       try {
         const [adminRes, clientRes, productRes, invoiceRes,distributorRes] = await Promise.all([
-          axios.get('http://localhost:8080/api/admins/count'),
-          axios.get('http://localhost:8080/api/clients/count'),
-          axios.get('http://localhost:8080/api/products/count'),
-          axios.get('http://localhost:8080/api/invoices/count'),
-          axios.get('http://localhost:8080/api/distributors/count'),
+          api.get('/api/admins/count'),
+          api.get('/api/clients/count'),
+          api.get('/api/products/count'),
+          api.get('/api/invoices/count'),
+          api.get('/api/distributors/count'),
         ]);
 
         setCounts({

@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import styles from "./AddClientForm.module.css";
 import axios from "axios";
+import api from "../../api/axiosConfig";
 
 const AddClientForm = () => {
 
@@ -15,7 +16,7 @@ const AddClientForm = () => {
   // Fetch distributor name
   if (id.trim() !== "") {
     try {
-      const res = await axios.get(`http://localhost:8080/api/distributors/${id}`);
+      const res = await api.get(`/api/distributors/${id}`);
       const newNames = [...distributorNames];
       newNames[index] = res.data.name || "Not Found";
       setDistributorNames(newNames);
@@ -53,7 +54,7 @@ const AddClientForm = () => {
 useEffect(() => {
   const fetchDistributors = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/distributors"); // Adjust your URL if needed
+      const res = await api.get("/api/distributors"); // Adjust your URL if needed
       setDistributors(res.data); // Assuming array of distributor objects with `id` or `code`
     } catch (err) {
       console.error("Error fetching distributors", err);
@@ -105,7 +106,7 @@ const handleProductDealChange = (e) => {
     distributorId: distributorIdList,
   };
     try {
-      const res = await axios.post("http://localhost:8080/api/clients", clientData);
+      const res = await api.post("/api/clients", clientData);
       alert("Client added: " + res.data.id);
       setClient({
         name: "",

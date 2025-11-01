@@ -2,12 +2,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 
 import dropdownIcon from '../assets/down-arrow.png';
 import userIcon from '../assets/man.png';
 import bellIcon from './assets/bell.png';
 import styles from './DistributorNav.module.css';
+import api from '../../api/axiosConfig';
 
 const DistributorNavbar = () => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const DistributorNavbar = () => {
 
   const fetchNotificationCount = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/notifications/count', {
+      const res = await api.get(' /api/notifications/count', {
         params: { recipientId: distributorId, userRole },
       });
       setUnreadCount(res.data);
@@ -55,7 +55,7 @@ const DistributorNavbar = () => {
 
   const fetchAllNotifications = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/notifications/all', {
+      const res = await api.get(' /api/notifications/all', {
         params: { recipientId: distributorId, userRole },
       });
       setNotifications(res.data);
@@ -66,7 +66,7 @@ const DistributorNavbar = () => {
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/notifications/mark-read/${id}`);
+      await api.put(` /api/notifications/mark-read/${id}`);
       fetchNotificationCount();
       fetchAllNotifications();
     } catch (err) {

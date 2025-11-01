@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import styles from "./ViewClients.module.css";
+import api from '../../api/axiosConfig';
 
 const ViewDistClients = () => {
   const [clients, setClients] = useState([]);
@@ -16,8 +17,8 @@ const ViewDistClients = () => {
   useEffect(() => {
     if (!distributor?.id) return;
 
-    axios
-      .get(`http://localhost:8080/api/clients/by-distributor/${distributor.id}`)
+    api
+      .get(`/api/clients/by-distributor/${distributor.id}`)
       .then((res) => {
         setClients(res.data);
       })

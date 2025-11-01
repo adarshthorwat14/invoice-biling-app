@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './CreateProductMngForm.module.css';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import api from '../../../api/axiosConfig';
 
 const CreateProductMngForm = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const CreateProductMngForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/productMng', formData);
+      await api.post('/api/productMng', formData);
       Swal.fire({
         icon: 'success',
         title: 'Employee Created!',

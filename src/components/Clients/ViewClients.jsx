@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import styles from './ViewClients.module.css';
+import api from '../../api/axiosConfig';
 
 const ViewClients = () => {
   const [clients, setClients] = useState([]);
@@ -8,7 +9,7 @@ const ViewClients = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/clients')
+    api.get('/api/clients')
       .then(res => {
         setClients(res.data);
         setFilteredClients(res.data);

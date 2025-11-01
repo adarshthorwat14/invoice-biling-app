@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from './WarehouseStock.module.css';
+import api from '../../api/axiosConfig';
 
 const WarehouseStock = () => {
   const [stockData, setStockData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/products')  // Adjust if endpoint differs
+    api.get(' /api/products')  // Adjust if endpoint differs
       .then(res => {
         setStockData(res.data);
         setLoading(false);

@@ -12,7 +12,7 @@ const VehicleRequests = () => {
 
   useEffect(() => {
     // ✅ Approved
-    fetch("http://localhost:8080/api/vehicle/status/approved")
+    fetch("https://billing-system-backendkj.onrender.com/api/vehicle/status/approved")
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => (b.requestId > a.requestId ? 1 : -1));
@@ -21,7 +21,7 @@ const VehicleRequests = () => {
       .catch((err) => console.error("Error fetching approved:", err));
 
     // ✅ Forwarded
-    fetch("http://localhost:8080/api/vehicle/pending/request")
+    fetch("https://billing-system-backendkj.onrender.com/api/vehicle/pending/request")
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => (b.requestId > a.requestId ? 1 : -1));
@@ -30,20 +30,20 @@ const VehicleRequests = () => {
       .catch((err) => console.error("Error fetching forwarded:", err));
 
     // ✅ Notifications unread list
-    fetch("http://localhost:8080/api/notifications/vehicle/approve/unread")
+    fetch("https://billing-system-backendkj.onrender.com/api/notifications/vehicle/approve/unread")
       .then((res) => res.json())
       .then((data) => setNotifications(data))
       .catch((err) => console.error("Error fetching notifications:", err));
 
     // ✅ Unread count
-    fetch("http://localhost:8080/api/notifications/vehicle/approve/count")
+    fetch("https://billing-system-backendkj.onrender.com/api/notifications/vehicle/approve/count")
       .then((res) => res.json())
       .then((count) => setUnreadCount(count))
       .catch((err) => console.error("Error fetching unread count:", err));
   }, []);
 
   const markAsRead = (id) => {
-    fetch(`http://localhost:8080/api/notifications/vehicle/approve/mark-read/${id}`, {
+    fetch(`https://billing-system-backendkj.onrender.com/api/notifications/vehicle/approve/mark-read/${id}`, {
       method: "PUT",
     })
       .then(() => {

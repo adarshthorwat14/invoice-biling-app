@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './RequestStockStatus.module.css';
-import axios from 'axios';
+
 import Swal from 'sweetalert2';
 import { FaEnvelope } from 'react-icons/fa';
+import api from '../../api/axiosConfig';
 
 const RequestStockStatus = () => {
   const distributor = JSON.parse(localStorage.getItem('distributor')); // assuming full object is stored
@@ -21,8 +22,8 @@ const RequestStockStatus = () => {
   // ========= Fetch Requests (your original logic) =========
   useEffect(() => {
     if (distributorId) {
-      axios
-        .get(`http://localhost:8080/api/distributors/${distributorId}/requests`)
+      api
+        .get(`/api/distributors/${distributorId}/requests`)
         .then((res) => {
           const sortedData = res.data.sort((a, b) =>
             b.requestId.localeCompare(a.requestId, undefined, { numeric: true })
@@ -40,7 +41,7 @@ const RequestStockStatus = () => {
   const fetchUnreadCount = async () => {
     if (!distributorId) return;
     try {
-      const res = await axios.get('http://localhost:8080/api/notifications/count', {
+      const res = await api.get('http://localhost:8080/api/notifications/count', {
         params: { recipientId: distributorId, userRole },
       });
       setUnreadCount(res.data);
@@ -52,7 +53,7 @@ const RequestStockStatus = () => {
   const fetchAllNotifications = async () => {
     if (!distributorId) return;
     try {
-      const res = await axios.get('http://localhost:8080/api/notifications/all', {
+      const res = await api.get('/api/notifications/all', {
         params: { recipientId: distributorId, userRole },
       });
       // Show only unread messages in the dropdown; latest first
@@ -72,7 +73,7 @@ const RequestStockStatus = () => {
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/notifications/mark-read/${id}`);
+      await api.put(`/api/notifications/mark-read/${id}`);
       // Optimistic UI updates
       setNotifications((prev) => prev.filter((n) => n.id !== id));
       setUnreadCount((prev) => Math.max(prev - 1, 0));

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './RegisterVehicle.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const RegisterVehicle = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ const RegisterVehicle = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:8080/api/logistics/vehicles', formData);
+      await api.post(' /api/logistics/vehicles', formData);
       alert('Vehicle Registered Successfully');
       setFormData({
         vehicleNumber: '',

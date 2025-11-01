@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import "./UpdateClient.css";
 import Swal from "sweetalert2";
+import api from "../../api/axiosConfig";
 
 const UpdateClient = () => {
   const [clientId, setClientId] = useState("");
@@ -10,8 +11,8 @@ const UpdateClient = () => {
 
   const fetchClient = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:8080/api/clients/${clientId}`
+      const res = await api.get(
+        `/api/clients/${clientId}`
       );
       setClient(res.data);
       setMessage("");
@@ -29,7 +30,7 @@ const UpdateClient = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/clients/${clientId}`, client);
+      await api.put(`/api/clients/${clientId}`, client);
       Swal.fire({
         icon: "success",
         title: "Success!",

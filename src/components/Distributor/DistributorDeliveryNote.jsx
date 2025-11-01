@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from './DistributorDeliveryNote.module.css';
-
+import api from '../../api/axiosConfig';
 const DistributorDeliveryNote = () => {
   const [distributorId, setDistributorId] = useState('');
   const [deliveryNotes, setDeliveryNotes] = useState([]);
@@ -18,7 +17,7 @@ const DistributorDeliveryNote = () => {
 
   const fetchDeliveryNotes = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/delivery/${id}/delivery-notes`);
+      const res = await api.get(`/api/delivery/${id}/delivery-notes`);
       setDeliveryNotes(res.data);
     } catch (err) {
       console.error('Failed to fetch delivery notes:', err);
@@ -27,7 +26,7 @@ const DistributorDeliveryNote = () => {
 
   const handleView = async (noteId) => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/delivery/${distributorId}/delivery-notes/${noteId}`);
+      const res = await api.get(`/api/delivery/${distributorId}/delivery-notes/${noteId}`);
       setSelectedNote(res.data);
     } catch (err) {
       console.error('Failed to fetch note details:', err);
@@ -36,7 +35,7 @@ const DistributorDeliveryNote = () => {
 
   const handleDownload = async (noteId) => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/delivery/${distributorId}/delivery-notes/${noteId}/download`, {
+      const res = await api.get(`/api/delivery/${distributorId}/delivery-notes/${noteId}/download`, {
         responseType: 'blob'
       });
       const url = window.URL.createObjectURL(new Blob([res.data]));

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './CreateProductRequest.module.css';
 import Swal from 'sweetalert2';
-import axios from 'axios';
-
+import api from '../../api/axiosConfig';
 const CreateProductRequest = () => {
   const [products, setProducts] = useState([]);
   const [plants, setPlants] = useState([]);
@@ -50,7 +49,7 @@ const CreateProductRequest = () => {
       }));
     }
 
-    axios.get("http://localhost:8080/api/products")
+    api.get("/api/products")
       .then(res => setProducts(res.data))
       .catch(err => console.error("Failed to fetch products", err));
   }, []);
@@ -143,7 +142,7 @@ const CreateProductRequest = () => {
     };
 
     try {
-      await axios.post('http://localhost:8080/api/distributors/request', payload);
+      await api.post('/api/distributors/request', payload);
       Swal.fire('Success', 'Product request submitted successfully!', 'success');
 
        setForm({

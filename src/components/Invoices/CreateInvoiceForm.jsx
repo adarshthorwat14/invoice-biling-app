@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from '../../api/axiosConfig';
 import Swal from "sweetalert2";
 import styles from "./CreateInvoiceForm.module.css";
 
@@ -31,13 +31,13 @@ const CreateInvoiceForm = () => {
   const [clientName, setClientName] = useState("");
 
       useEffect(() => {
-      axios.get('http://localhost:8080/api/plants')
+      api.get('http://localhost:8080/api/plants')
         .then(res => setPlantList(res.data))
         .catch(err => console.error('Failed to fetch plants', err));
     }, []);  
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/distributors")
+    api.get("/api/distributors")
       .then(res => setDistributors(res.data))
       .catch(err => console.error("Error loading distributors", err));
   }, []);
@@ -46,13 +46,13 @@ const CreateInvoiceForm = () => {
     if (selectedDistributor) {
       setOrderDetails((prev) => ({ ...prev, distributorId: selectedDistributor }));
 
-      axios.get("http://localhost:8080/api/clients")
+      api.get("/api/clients")
         .then((res) => setClients(res.data));
 
-      axios.get("http://localhost:8080/api/products")
+      api.get("/api/products")
         .then((res) => setProducts(res.data));
 
-      axios.get(`http://localhost:8080/api/distributors/stock/${selectedDistributor}`)
+      api.get(`/api/distributors/stock/${selectedDistributor}`)
         .then((res) => {
           const map = {};
           res.data.forEach(item => {
@@ -223,7 +223,7 @@ const CreateInvoiceForm = () => {
     };
 
     try {
-      await axios.post("http://localhost:8080/api/invoices", payload);
+      await api.post("/api/invoices", payload);
       Swal.fire("Success", "Invoice created", "success");
       setInvoiceItems([]);
       setOrderDetails({

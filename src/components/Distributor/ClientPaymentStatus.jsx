@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import styles from './ClientPaymentStatus.module.css';
+import api from '../../api/axiosConfig';
 
 const ClientPaymentStatus = () => {
   const [records, setRecords] = useState([]);
@@ -12,13 +13,13 @@ const ClientPaymentStatus = () => {
   }, []);
 
   const fetchData = () => {
-    axios.get('http://localhost:8080/api/invoices/payment-status')
+    api.get('/api/invoices/payment-status')
       .then(res => setRecords(res.data))
       .catch(err => console.error('Error loading payment status', err));
   };
 
   const handleUpdate = (invoiceId) => {
-    axios.put(`http://localhost:8080/api/invoices/${invoiceId}/update-payment-status`, {
+    api.put(`/api/invoices/${invoiceId}/update-payment-status`, {
       paymentStatus: newStatus
     }).then(() => {
       setUpdatingId(null);

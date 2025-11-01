@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './UpdateVehicle.module.css';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import api from '../../api/axiosConfig';
 
 const UpdateVehicle = () => {
   const [vehicleId, setVehicleId] = useState('');
@@ -10,7 +10,7 @@ const UpdateVehicle = () => {
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/logistics/vehicles/${vehicleId}`);
+      const res = await axios.get(` /api/logistics/vehicles/${vehicleId}`);
       setVehicle(res.data);
       setMessage('');
     } catch (err) {
@@ -28,7 +28,7 @@ const UpdateVehicle = () => {
   e.preventDefault();
 
   try {
-    const response = await axios.put(`http://localhost:8080/api/logistics/vehicles/update/${vehicleId}`, vehicle);
+    const response = await api.put(` /api/logistics/vehicles/update/${vehicleId}`, vehicle);
     
     if (response.status === 200) {
       Swal.fire({

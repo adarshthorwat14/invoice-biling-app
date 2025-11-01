@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styles from "./AddProductForm.module.css";
+import api from "../../api/axiosConfig";
 
 const AddProductForm = () => {
   const [product, setProduct] = useState({
@@ -26,8 +26,8 @@ const AddProductForm = () => {
   const [toast, setToast] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/plants")
+    api
+      .get("/api/plants")
       .then((res) => {
         const data = Array.isArray(res.data) ? res.data : [res.data];
         const cleanPlants = data.map((p) => ({
@@ -43,8 +43,8 @@ const AddProductForm = () => {
         setToast({ type: "error", message: "Failed to load plants." });
       });
 
-    axios
-      .get("http://localhost:8080/api/hsn")
+    api
+      .get("/api/hsn")
       .then((res) => setHsnList(res.data || []))
       .catch((err) => {
         console.error("Failed to fetch HSN codes", err);
@@ -88,8 +88,8 @@ const AddProductForm = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post(
-        "http://localhost:8080/api/products/upload",
+      const res = await api.post(
+        "/api/products/upload",
         formData
       );
       setProduct((prev) => ({ ...prev, img: res.data }));
@@ -141,8 +141,8 @@ const AddProductForm = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post(
-        "http://localhost:8080/api/products",
+      const res = await api.post(
+        "/api/products",
         preparedProduct
       );
       setSubmittedProduct(res.data);
@@ -316,7 +316,7 @@ const AddProductForm = () => {
           {product.img && (
             <div className={styles.previewWrap}>
               <img
-                src={`http://localhost:8080/uploads/${product.img}`}
+                src={`https://billing-system-backendkj.onrender.com/uploads/uploads/${product.img}`}
                 alt="Preview"
                 className={styles.imagePreview}
               />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ViewDistributors.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const ViewDistributors = () => {
   const [distributors, setDistributors] = useState([]);
@@ -8,7 +8,7 @@ const ViewDistributors = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/distributors')
+    api.get('/api/distributors')
       .then(res => {
         setDistributors(res.data);
         setFilteredDistributors(res.data); // ✅ important: set filtered initially

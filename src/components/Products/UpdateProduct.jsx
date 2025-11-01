@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './UpdateProduct.css';
+import api from '../../api/axiosConfig';
 
 const UpdateProduct = () => {
   const [productId, setProductId] = useState('');
@@ -29,11 +29,11 @@ const UpdateProduct = () => {
 
   // Fetch all plants and hsn codes on mount
   useEffect(() => {
-    axios.get('http://localhost:8080/api/plants')
+    api.get('/api/plants')
       .then(res => setPlants(res.data))
       .catch(err => console.error('Error fetching plants:', err));
 
-    axios.get('http://localhost:8080/api/hsn')
+    api.get('/api/hsn')
       .then(res => setHsns(res.data))
       .catch(err => console.error('Error fetching HSNs:', err));
   }, []);
@@ -45,7 +45,7 @@ const UpdateProduct = () => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:8080/api/products/${productId}`);
+      const res = await api.get(`/api/products/${productId}`);
       const product = res.data;
 
       setProductData({
@@ -103,7 +103,7 @@ const UpdateProduct = () => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post('http://localhost:8080/api/products/upload', formData);
+      const res = await api.post('/api/products/upload', formData);
       setProductData(prev => ({ ...prev, img: res.data }));
       setMessage('Image uploaded successfully!');
     } catch (error) {
@@ -114,7 +114,7 @@ const UpdateProduct = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:8080/api/products/update/${productId}`, productData);
+      await api.put(`/api/products/update/${productId}`, productData);
       setMessage('Product updated successfully!');
       setProductFound(false);
       setProductId('');

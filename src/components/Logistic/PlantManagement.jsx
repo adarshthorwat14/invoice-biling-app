@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from './PlantManagement.module.css';
+import api from '../../api/axiosConfig';
 
 const PlantManagement = () => {
   const [plantList, setPlantList] = useState([]);
@@ -8,7 +8,7 @@ const PlantManagement = () => {
 
   const fetchPlants = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/plants');
+      const res = await api.get(' /api/plants');
       setPlantList(res.data);
     } catch (err) {
       console.error('Error fetching plants:', err);
@@ -27,7 +27,7 @@ const PlantManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/plants', plant);
+      await api.post(' /api/plants', plant);
       alert('✅ Plant added successfully!');
       setPlant({ name: '', location: '',description : '' });
       fetchPlants();

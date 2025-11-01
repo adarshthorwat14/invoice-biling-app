@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import styles from './ApprovedVehicleDispatch.module.css';
+import api from '../../api/axiosConfig';
 
 const ApprovedVehicleDispatch = () => {
   const [approvedRequests, setApprovedRequests] = useState([]);
@@ -13,7 +14,7 @@ const ApprovedVehicleDispatch = () => {
 
   const fetchApprovedRequests = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/vehicle/approved');
+      const res = await api.get('/api/vehicle/approved');
       setApprovedRequests(res.data);
     } catch (err) {
       console.error('Failed to fetch approved requests:', err);
@@ -36,7 +37,7 @@ const ApprovedVehicleDispatch = () => {
     };
 
     try {
-      const res = await axios.post('http://localhost:8080/api/dispatches/create', dispatchData);
+      const res = await api.post('/api/dispatches/create', dispatchData);
       setDispatchSuccess(res.data);
       setApprovedRequests(prev => prev.filter(r => r.requestId !== req.requestId));
       setExpandedRow(null);

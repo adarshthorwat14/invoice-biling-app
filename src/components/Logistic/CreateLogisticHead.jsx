@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from './CreateLogisticHead.module.css';
-import axios from 'axios';
+
 import Swal from 'sweetalert2';
+import api from '../../api/axiosConfig';
 
 const CreateLogisticHead = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +54,7 @@ const CreateLogisticHead = () => {
     };
 
     try {
-      await axios.post('http://localhost:8080/api/logistics/create', payload);
+      await api.post('/api/logistics/create', payload);
       Swal.fire('Success!', 'Logistic Head Created', 'success');
       setFormData({
         name: '',

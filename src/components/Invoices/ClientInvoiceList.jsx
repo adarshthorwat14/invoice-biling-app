@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 import './InvoiceList.css';
 import Swal from 'sweetalert2';
 
@@ -25,7 +25,7 @@ const fetchInvoices = () => {
   }
 
   const client = JSON.parse(stored);
-  axios.get(`http://localhost:8080/api/invoices/client/${client.id}`)
+  api.get(`/api/invoices/client/${client.id}`)
     .then(res => {
       setInvoices(res.data);
       setFilteredInvoices(res.data);
@@ -63,7 +63,7 @@ const fetchInvoices = () => {
   }, [clientId, startDate, endDate]);
 
   const downloadPDF = (invoiceId) => {
-    axios.get(`http://localhost:8080/api/invoices/${invoiceId}/pdf`, {
+    api.get(`/api/invoices/${invoiceId}/pdf`, {
       responseType: 'blob',
     }).then((response) => {
       const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -90,7 +90,7 @@ const fetchInvoices = () => {
     reverseButtons: true,
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(`http://localhost:8080/api/invoices/${invoiceId}`)
+      api.delete(`/api/invoices/${invoiceId}`)
         .then(() => {
           Swal.fire('Canceled!', 'Invoice has been canceled.', 'success');
           fetchInvoices();
@@ -107,7 +107,7 @@ const fetchInvoices = () => {
 
 
   const viewInvoice = (invoiceId) => {
-    axios.get(`http://localhost:8080/api/invoices/${invoiceId}/pdf`, {
+    api.get(`/api/invoices/${invoiceId}/pdf`, {
       responseType: 'blob',
     }).then((response) => {
       const file = new Blob([response.data], { type: 'application/pdf' });

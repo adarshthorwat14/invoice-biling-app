@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ViewVehicles.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const ViewVehicles = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -8,7 +8,7 @@ const ViewVehicles = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/logistics/vehicles')
+    api.get(' /api/logistics/vehicles')
       .then(res => {
         setVehicles(res.data);
         setFilteredVehicles(res.data);
