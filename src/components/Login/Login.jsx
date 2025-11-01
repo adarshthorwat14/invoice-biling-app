@@ -16,7 +16,7 @@ const Login = () => {
     setPassword('');
   };
 
-  if(selectedRole = "admin")
+  if(selectedRole === "admin")
   {
     navigate('/admin/home');
   }
