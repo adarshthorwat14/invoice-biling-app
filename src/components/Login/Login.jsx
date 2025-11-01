@@ -162,8 +162,8 @@ const handleSalesPersonLogin = async (e) => {
       {selectedRole === 'admin' 
       && (
         <form className={styles.form} onSubmit={handleAdminLogin}>
-           <input type="email" placeholder="Admin Email" value="adarshthorwat@beunique.com" required onChange={(e) => setEmail(e.target.value)} />
-           <input type="password" placeholder="Password" value="Adarsh123" required onChange={(e) => setPassword(e.target.value)} />
+           <input type="email" placeholder="Admin Email" value={email} required onChange={(e) => setEmail(e.target.value)} />
+           <input type="password" placeholder="Password" value={password} required onChange={(e) => setPassword(e.target.value)} />
            <button type="submit">Login as Admin</button>
         </form>
       )
