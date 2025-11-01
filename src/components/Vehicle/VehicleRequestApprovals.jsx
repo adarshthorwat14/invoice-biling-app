@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './VehicleRequestApprovals.css';
+import api from '../../api/axiosConfig';
 
 const VehicleRequestApprovals = () => {
   const [requests, setRequests] = useState([]);
@@ -13,7 +13,7 @@ const VehicleRequestApprovals = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/vehicle/pending/request');
+      const res = await api.get('/api/vehicle/pending/request');
       setRequests(res.data);
       console.log
     } catch (err) {
@@ -23,8 +23,8 @@ const VehicleRequestApprovals = () => {
 
 const approveRequest = async (transportId) => {
   try {
-    await axios.post(
-      `http://localhost:8080/api/vehicle/vehicle-requests/approve?transportId=${encodeURIComponent(transportId)}`
+    await api.post(
+      `/api/vehicle/vehicle-requests/approve?transportId=${encodeURIComponent(transportId)}`
     );
 
     // ✅ Remove the approved request from the UI

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from './GatePassView.module.css';
+import api from '../../api/axiosConfig';
 
 const GatePassView = () => {
   const [gatePasses, setGatePasses] = useState([]);
@@ -13,7 +13,7 @@ const GatePassView = () => {
 
   const fetchGatePasses = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/gate-passes/all');
+      const res = await api.get('/api/gate-passes/all');
       setGatePasses(res.data);
     } catch (err) {
       console.error('Failed to fetch gate passes:', err);
@@ -26,7 +26,7 @@ const GatePassView = () => {
 
  const handleDelete = async (gatePassId) => {
   try {
-    await axios.delete(`http://localhost:8080/api/gate-passes/delete`, {
+    await api.delete(`/api/gate-passes/delete`, {
       params: { gatePassId: gatePassId },
     });
 
@@ -45,8 +45,8 @@ const GatePassView = () => {
 
   const handleSaveUpdate = async () => {
     try {
-    await axios.put(
-  `http://localhost:8080/api/gate-passes/update?gatePassId=${encodeURIComponent(editGatePass.gatePassId)}`,
+    await api.put(
+  `/api/gate-passes/update?gatePassId=${encodeURIComponent(editGatePass.gatePassId)}`,
   editGatePass
 );
 

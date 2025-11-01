@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import './DistributorForm.css';
 import api from '../../api/axiosConfig';
+import axios from 'axios';
 
 const DistributorForm = () => {
   const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ const DistributorForm = () => {
       status: true // hardcoded true for backend
     };
     try {
-      const response = await api.post('/api/distributors', payload);
+      const response = await axios.post('https://billing-system-backendkj.onrender.com/api/distributors', payload);
       const createdId = response.data.id;
       Swal.fire({
         title: 'Success!',

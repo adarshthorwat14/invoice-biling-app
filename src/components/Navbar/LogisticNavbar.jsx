@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 import dropdownIcon from '../assets/down-arrow.png';
 import userIcon from '../assets/man.png';
 import bellIcon from './assets/bell.png';
 import styles from './LogisticNavbar.module.css';
 import { FaBell } from "react-icons/fa";
+import api from '../../api/axiosConfig';
 
 const LogisticNavbar = () => {
   const navigate = useNavigate();
@@ -59,8 +59,8 @@ const LogisticNavbar = () => {
 
   const fetchNotificationCount = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/notifications/plant/count");
-      const res1 = await axios.get("http://localhost:8080/api/notifications/vehicle/approve/count");
+      const res = await api.get("/api/notifications/plant/count");
+      const res1 = await api.get("/api/notifications/vehicle/approve/count");
       setUnreadCount(res.data);
       setUnreadCountVeAppr(res1.data);
     } catch (err) {
@@ -70,7 +70,7 @@ const LogisticNavbar = () => {
 
   const fetchNotificationCountVehicle = async () => {
     try {
-      const res1 = await axios.get("http://localhost:8080/api/notifications/vehicle/approve/count");
+      const res1 = await api.get("/api/notifications/vehicle/approve/count");
       setUnreadCountVeAppr(res1.data);
     } catch (err) {
       console.error("Error fetching unread count:", err);
@@ -79,8 +79,8 @@ const LogisticNavbar = () => {
 
   const fetchAllNotifications = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/notifications/plant");
-      const res1 = await axios.get("http://localhost:8080/api/notifications/vehicle/approve");
+      const res = await api.get("/api/notifications/plant");
+      const res1 = await api.get("/api/notifications/vehicle/approve");
       setNotifications(res.data);
       setNotificationsVeAppr(res1.data);
     } catch (err) {
@@ -90,7 +90,7 @@ const LogisticNavbar = () => {
 
     const fetchAllNotificationsVehicle = async () => {
     try {
-      const res1 = await axios.get("http://localhost:8080/api/notifications/vehicle/approve");
+      const res1 = await api.get("/api/notifications/vehicle/approve");
       setNotificationsVeAppr(res1.data);
     } catch (err) {
       console.error("Error fetching notifications:", err);
@@ -99,7 +99,7 @@ const LogisticNavbar = () => {
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/notifications/mark-read/${id}`);
+      await api.put(`/api/notifications/mark-read/${id}`);
       fetchNotificationCount();
       fetchAllNotifications();
       fetchNotificationCountVehicle();

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PlantProductRequests.module.css';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import api from '../../api/axiosConfig';
 
 const PlantProductRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -20,7 +20,7 @@ const PlantProductRequests = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/distributors/all');
+      const res = await api.get('/api/distributors/all');
       setRequests(res.data);
     } catch (error) {
       console.error('Error fetching requests:', error);
@@ -30,7 +30,7 @@ const PlantProductRequests = () => {
   // Fetch plant stock for a specific product
   const fetchPlantStockByProduct = async (productId) => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/plants/plant-stock/by-product/${productId}`);
+      const res = await api.get(`/api/plants/plant-stock/by-product/${productId}`);
       setPlantStocks(prev => ({ ...prev, [productId]: res.data }));
     } catch (err) {
       console.error('Failed to fetch plant stock:', err);
@@ -139,9 +139,9 @@ const PlantProductRequests = () => {
       };
 
       // Use the controller path you created
-      const url = `http://localhost:8080/api/distributors/request/${req.requestId}/status`;
+      const url = `/api/distributors/request/${req.requestId}/status`;
 
-      const res = await axios.put(url, payload);
+      const res = await api.put(url, payload);
 
       // clear allocations for this request and corresponding inputs
       setPlantApprovals(prev => {
@@ -167,8 +167,8 @@ const PlantProductRequests = () => {
       (req.requestItems || []).forEach(item => fetchPlantStockByProduct(item.productId));
 
       // show delivery note if any
-      const deliveryRes = await axios.get(
-        `http://localhost:8080/api/delivery/delivery-notes/by-request/${req.requestId}`
+      const deliveryRes = await api.get(
+        `/api/delivery/delivery-notes/by-request/${req.requestId}`
       );
       const notes = deliveryRes.data || [];
 

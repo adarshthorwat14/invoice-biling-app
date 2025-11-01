@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './InvoiceItemsPanel.module.css';
-import axios from 'axios';
+import api from '../../api/axiosConfig';
 
 const InvoiceItemsPanel = ({ invoiceItems, setInvoiceItems, totalAmount, setTotalAmount, onCreateInvoice }) => {
   const [products, setProducts] = useState([]);
@@ -11,7 +11,7 @@ const InvoiceItemsPanel = ({ invoiceItems, setInvoiceItems, totalAmount, setTota
   const selectedProduct = products.find(p => p.productId === selectedProductId);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/products")
+    api.get("/api/products")
       .then(res => setProducts(res.data))
       .catch(err => console.error("Error fetching products", err));
   }, []);
